@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirmal Path - A Step Towards a Cleaner Planet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4;
+            color: #166534;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 1rem;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #f0fdf4;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .close-button {
+            float: right;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6b7280;
+        }
+        .close-button:hover {
+            color: #374151;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .name{font-size:40px;}
+        .waste{width:550px;height:350px;border-radius:18px;}
+
+        .community{width:350px;height:350px;}
+
+        .logo{width:80px;height:80px;border-radius:200px;}
+
+
+        .shop{width:350px;
+        height:350px;}
+
+        .rewards{width:350px;height:350px;}
+
+        .dustbin{width:350px;height:350px;margin-bottom:24px;margin-left:24px;border-radius:14px;}
+        .click{width:350px;height:350px;margin-left:24px;margin-bottom:18px;border-radius:14px;}
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Modal for messages -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <p id="modalMessage" class="text-lg"></p>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-emerald-600 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center space-x-2 text-white font-bold text-2xl">
+                <img class="logo"src="logo-path.jpg" alt="Nirmal Path Logo" class="w-10 h-10 rounded-full bg-white p-1">
+                <span class="name">NirmalPath</span>
+            </a>
+            <!-- Nav Links -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-white hover:text-emerald-200 transition-colors duration-300">Home</a>
+                <a href="#services" class="text-white hover:text-emerald-200 transition-colors duration-300">Services</a>
+                <a href="#community" class="text-white hover:text-emerald-200 transition-colors duration-300">Community</a>
+                <a href="#shopping" class="text-white hover:text-emerald-200 transition-colors duration-300">Shopping</a>
+                <a href="#about" class="text-white hover:text-emerald-200 transition-colors duration-300">About Us</a>
+                <a href="#contact" class="text-white hover:text-emerald-200 transition-colors duration-300">Contact</a>
+                <select id="language-select" class="bg-emerald-700 text-white rounded-md p-1 focus:outline-none">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="mr">मराठी</option>
+                </select>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-emerald-700 text-center">
+            <a href="#home" class="block py-2 text-white hover:bg-emerald-600">Home</a>
+            <a href="#services" class="block py-2 text-white hover:bg-emerald-600">Services</a>
+            <a href="#community" class="block py-2 text-white hover:bg-emerald-600">Community</a>
+            <a href="#shopping" class="block py-2 text-white hover:bg-emerald-600">Shopping</a>
+            <a href="#about" class="block py-2 text-white hover:bg-emerald-600">About Us</a>
+            <a href="#contact" class="block py-2 text-white hover:bg-emerald-600">Contact</a>
+            <select id="mobile-language-select" class="block w-full text-center py-2 bg-emerald-700 text-white">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+                <option value="mr">मराठी</option>
+            </select>
+        </div>
+    </nav>
+
+    <main class="container mx-auto py-8 px-4">
+
+        <!-- Home Section -->
+        <section id="home" class="mb-16">
+            <div class="text-center py-20 px-4 md:px-8 bg-emerald-500 rounded-2xl shadow-xl flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
+                <div class="text-white md:w-1/2 text-left animate-fadeInUp">
+                    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-shadow">
+                        <span class="block">Clean Living,</span>
+                        <span class="block">Green Future</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-6">A unified platform for smarter waste management and sustainable living.</p>
+                    <button class="bg-white text-emerald-600 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-emerald-100 transition duration-300 transform hover:scale-105">Learn More</button>
+                </div>
+                <div class="md:w-1/2 animate-fadeInUp" style="animation-delay: 0.2s;">
+                    <img class="waste" src="waste.jpg" alt="App Mockup" class="w-full h-auto rounded-xl shadow-2xl">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Section -->
+        <section id="services" class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-10 text-emerald-800">Our Services</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- AI Image Segregation -->
+                <div class="bg-white p-8 rounded-2xl shadow-md transform transition-transform duration-300 hover:scale-105 animate-fadeInUp" style="animation-delay: 0.3s;">
+                    <div class="text-center text-emerald-600 mb-4">
+                        
+                    </div>
+                    <img class="click" src="click.jpeg">
+                    <h3 class="text-2xl font-semibold mb-2 text-emerald-700">AI Waste Segregation</h3>
+                    <p class="text-gray-600">Use our AI-powered camera to identify and categorize waste instantly. Get guidance on how to dispose of it correctly.</p>
+                </div>
+                <!-- QR Code Dustbins -->
+                <div class="bg-white p-8 rounded-2xl shadow-md transform transition-transform duration-300 hover:scale-105 animate-fadeInUp" style="animation-delay: 0.4s;">
+                    <img class="dustbin" src="dustbins.png" alt="Dustbins with QR codes" class="w-full h-auto rounded-lg mb-4">
+                    <h3 class="text-2xl font-semibold mb-2 text-emerald-700">QR Generated Dustbins</h3>
+                    <p class="text-gray-600">Scan QR codes on smart dustbins to track your waste contributions and earn rewards. An USP for a better world.</p>
+                </div>
+                <!-- Rewards & Redeem -->
+                <div class="bg-white p-8 rounded-2xl shadow-md transform transition-transform duration-300 hover:scale-105 animate-fadeInUp" style="animation-delay: 0.5s;">
+                    <div class="text-center text-emerald-600 mb-4">
+                        <img class="rewards" src="rewards2.jpg" alt="Rewards Icon" class="w-24 h-24 mx-auto rounded-full mb-2">
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2 text-emerald-700">Rewards & Redeem</h3>
+                    <p class="text-gray-600">Every segregated waste submission earns you points. Redeem them for exclusive discounts or eco-friendly products.</p>
+                </div>
+                <!-- Waste Solutions -->
+                <div class="bg-white p-8 rounded-2xl shadow-md transform transition-transform duration-300 hover:scale-105 animate-fadeInUp" style="animation-delay: 0.6s;">
+                    <div class="text-center text-emerald-600 mb-4">
+                        <i class="fas fa-lightbulb text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2 text-emerald-700">Waste Management Ideas</h3>
+                    <p class="text-gray-600">Learn about different waste management solutions, from composting to upcycling, and implement them in your daily life.</p>
+                </div>
+                <!-- Language Selection -->
+                <div class="bg-white p-8 rounded-2xl shadow-md transform transition-transform duration-300 hover:scale-105 animate-fadeInUp" style="animation-delay: 0.7s;">
+                    <div class="text-center text-emerald-600 mb-4">
+                        <i class="fas fa-globe text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2 text-emerald-700">Multi-Language Support</h3>
+                    <p class="text-gray-600">The app is available in multiple languages to make sustainable living accessible to everyone in your community.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-10 text-emerald-800">Join Our Community</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-md flex flex-col md:flex-row items-center justify-center md:space-x-8">
+                <div class="md:w-1/2 mb-6 md:mb-0">
+                    <img class="community"src="waste.jpeg" alt="Community" class="w-full h-auto rounded-xl shadow-lg">
+                </div>
+                <div class="md:w-1/2 text-gray-700">
+                    <p class="mb-4">Connect with fellow green warriors! Share tips, organize clean-up drives, and celebrate your progress together. Our community forum is a space for inspiration and collaboration.</p>
+                    <p>Participate in challenges, see your collective impact, and find local events to make a bigger difference. Together, we can create a powerful network for change.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shopping Section -->
+        <section id="shopping" class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-10 text-emerald-800">Eco-Friendly Shopping</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-md flex flex-col md:flex-row items-center justify-center md:space-x-8">
+                <div class="md:w-1/2 mb-6 md:mb-0">
+                    <img class="shop" src="shop.jpeg" alt="Shopping" class="w-full h-auto rounded-xl shadow-lg">
+                </div>
+                <div class="md:w-1/2 text-gray-700">
+                    <p class="mb-4">Your points can be used to shop for sustainable products that support local artisans and eco-conscious businesses. From recycled notebooks to compostable cutlery, every purchase contributes to a greener planet.</p>
+                    <p>Our marketplace features carefully selected products, ensuring they meet the highest standards of sustainability and ethical production. Shop smart, live green.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- About Us Section -->
+        <section id="about" class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-10 text-emerald-800">About Us</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-md text-gray-700">
+                <p class="mb-4">NirmalPath, meaning "Clean Path," is a movement aimed at revolutionizing waste management. We believe that technology and community effort can create a sustainable and clean environment. Our platform leverages AI and a unique QR-based system to encourage responsible waste disposal and reward eco-conscious behavior.</p>
+                <p>We are a team of passionate innovators, environmentalists, and community builders dedicated to making a tangible difference. Our goal is to empower individuals to take small, actionable steps that collectively lead to a cleaner, greener planet for future generations.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-10 text-emerald-800">Contact Us</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-md">
+                <form id="contact-form">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full p-3 rounded-md bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full p-3 rounded-md bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4" required class="w-full p-3 rounded-md bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-emerald-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-emerald-700 transition duration-300 transform hover:scale-105">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 NirmalPath. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="https://facebook.com" class="text-white hover:text-emerald-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" class="text-white hover:text-emerald-300"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" class="text-white hover:text-emerald-300"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" class="text-white hover:text-emerald-300"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Modal functions
+        function showModal(message) {
+            document.getElementById('modalMessage').innerText = message;
+            document.getElementById('messageModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('messageModal').style.display = 'none';
+        }
+
+        // Contact Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            showModal("Thank you for your message! We will get back to you soon.");
+            this.reset();
+        });
+        
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Language Select
+        function changeLanguage(event) {
+            showModal(`Language changed to ${event.target.value}. This is a demo feature.`);
+        }
+        document.getElementById('language-select').addEventListener('change', changeLanguage);
+        document.getElementById('mobile-language-select').addEventListener('change', changeLanguage);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                // Check if href is not just a single '#' before scrolling
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                  document.querySelector(href).scrollIntoView({
+                      behavior: 'smooth'
+                  });
+                }
+                
+                // Hide mobile menu after clicking a link
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
